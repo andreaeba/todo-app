@@ -1,10 +1,22 @@
 import "./App.css";
-import FixedContainer from "./components/MainContainer";
+import { InputNewTask } from "./components/InputNewTask";
+import Header from "./components/Header";
+import { ContainerCards } from "./components/ContainerCards";
+import { useState } from "react";
 
 function App() {
+
+  const [toDo, setToDo] = useState(
+    JSON.parse(localStorage.getItem(["tasks"])) || []
+  );
+
   return (
     <>
-      <FixedContainer />
+      <Header />
+      <InputNewTask toDo={toDo} setToDo={setToDo} />
+      <ContainerCards toDo={toDo} setToDo={setToDo} />
+
+      
     </>
   );
 }
