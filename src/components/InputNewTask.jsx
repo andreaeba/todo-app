@@ -15,18 +15,30 @@ export const InputNewTask = ( {toDo, setToDo} ) => {
   };
 
   const handleInputChange = (e) => {
+
     const text = e.target.value;
+
     setInputText(text);
+
+    
   };
 
   const handleSaveTask = (e) => {
     e.preventDefault();
 
-    setToDo([...toDo, task]);
+    if(task.text.length >= 2) {
 
-    localStorage.setItem("tasks", JSON.stringify([...toDo, task]));
+      setToDo([...toDo, task]);
 
-    setInputText("");
+      localStorage.setItem("tasks", JSON.stringify([...toDo, task]));
+  
+      setInputText("");
+
+    } else {
+      alert("Las tareas deben tener al menos 5 letras")
+    }
+
+
   };
   
   return (
