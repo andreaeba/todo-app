@@ -22,6 +22,7 @@ export const ContainerCards = ({ toDo, setToDo }) => {
                   toDo={toDo}
                   setToDo={setToDo}
                   value={task.id}
+                  id={task.id}
                 >
                   
                     

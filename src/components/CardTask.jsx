@@ -16,27 +16,27 @@ import { Task } from "@mui/icons-material";
 
 export const CardTask = ({ id, text, isComplete, setToDo, toDo }) => {
 
-  // Function para eliminar card
-  const deleteTask = (e) => {
-    // e.preventDefault();
 
+  // Function para eliminar card
+  const deleteTask = () => {
+    // e.preventDefault();
     console.log(id)
 
+    // console.log(id)
 
+    const isDelete = window.confirm(
+      `¿Está seguro que desea eliminar la tarea?`
+    );
 
-    // const isDelete = window.confirm(
-    //   `¿Está seguro que desea eliminar la tarea?`
-    // );
+    if (isDelete) {
 
-    // if (isDelete) {
+      const newListTaks = toDo.filter((task) => task.id !== id);
+      setToDo(newListTaks);
 
-    //   // const newListTaks = toDo.filter((task) => task.id !== id);
-    //   // setToDo(newListTaks);
+      localStorage.setItem("tasks", JSON.stringify([toDo]));
 
-    //   // localStorage.setItem("tasks", JSON.stringify([toDo]));
-
-    //   console.log(id)
-    // }
+      console.log(id)
+    }
   };
 
   return (
@@ -65,7 +65,7 @@ export const CardTask = ({ id, text, isComplete, setToDo, toDo }) => {
               aria-label="delete"
               color="primary"
               value={id}
-              onClick={(e) => deleteTask(id)}
+              onClick={deleteTask}
             >
               <DeleteIcon />
             </IconButton>
