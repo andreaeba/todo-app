@@ -19,10 +19,8 @@ export const CardTask = ({ id, text, isComplete, setToDo, toDo }) => {
 
   // Function para eliminar card
   const deleteTask = () => {
-    // e.preventDefault();
-    console.log(id)
 
-    // console.log(id)
+    console.log(id)
 
     const isDelete = window.confirm(
       `¿Está seguro que desea eliminar la tarea?`
@@ -39,6 +37,22 @@ export const CardTask = ({ id, text, isComplete, setToDo, toDo }) => {
     }
   };
 
+    // Función para hacer check a task
+    const checkedTask = () => {
+
+      console.log(id)
+      let newArray = JSON.parse(localStorage.getItem("tasks")).map((task) => {
+        if (task.id == id) {
+          return { ...task, isComplete: !task.isComplete };
+        }
+        return task;
+      });
+  
+      setToDo(newArray);
+  
+      localStorage.setItem("tasks", JSON.stringify(newArray));
+    };
+
   return (
     <>
       <Card
@@ -51,11 +65,23 @@ export const CardTask = ({ id, text, isComplete, setToDo, toDo }) => {
         }}
       >
         <CardContent>
-          <Typography>{text}</Typography>
+          <Typography
+          className=
+          {
+            toDo.filter((task) => task.id == id) &&
+            `${isComplete ? "checked" : ""}`
+            
+          }
+          >{text}</Typography>
         </CardContent>
         <Box>
           <CardActions>
-            <IconButton variant="outlined" color="primary" size="small" value={id}>
+            <IconButton
+            variant="outlined"
+            color="primary"
+            size="small" value={id}
+            onClick={checkedTask}
+            >
               <CheckIcon />
             </IconButton>
             <IconButton variant="outlined" color="primary" size="small" value={id}>
