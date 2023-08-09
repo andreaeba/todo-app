@@ -3,7 +3,6 @@ import Box from "@mui/material/Box";
 import { Container, Typography } from "@mui/material";
 import Logo from "../assets/logo-todo.jpg";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import { ContainerCards } from "./ContainerCards";
 
 export default function Header({ children }) {
 
@@ -11,7 +10,7 @@ export default function Header({ children }) {
     <>
       <CssBaseline />
       <Container maxWidth="xs">
-        <Box sx={{ bgcolor: "#cfe8fc" }}>
+        <Box>
           <Box>
             <img src={Logo} />
           </Box>
@@ -28,10 +27,10 @@ export default function Header({ children }) {
           >
             <Box display="flex" flexDirection="column" alignItems="start">
               <Typography variant="h5" component="h5" fontWeight={600}>
-                Hi, Andrea
+                Hi
               </Typography>
               <Typography variant="body2">
-                You have 5 tasks to accomplish today!
+                You have some tasks to accomplish today!
               </Typography>
             </Box>
 

@@ -1,14 +1,12 @@
-import { Box, Button, Card, CardContent, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { CardTask } from "./CardTask";
-import { CardActionArea } from "@mui/material";
-import CardActions from "@mui/material/CardActions";
 
 export const ContainerCards = ({ toDo, setToDo }) => {
   return (
-    <Box sx={{ width: "100%" }}>
+    <Box sx={{ width: "100%" }} display="flex" justifyContent="center" bgcolor="#E2E2E2" marginTop="20px" borderRadius="5px">
       <Box>
         <Typography textAlign="left" p={2}>
-          To do ⌛
+          To do List 💣
         </Typography>
 
         <Box>
@@ -23,11 +21,7 @@ export const ContainerCards = ({ toDo, setToDo }) => {
                   setToDo={setToDo}
                   value={task.id}
                   id={task.id}
-                >
-                  
-                    
-                 
-                </CardTask>
+                ></CardTask>
               );
             })}
         </Box>
